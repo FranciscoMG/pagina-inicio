@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+
+        <title>Página de inicio de Internet</title>
+
+        <style>
+            .btn-orange {
+                background-color: #EF9A1C;
+                color: #000000;
+            }
+
+            .btn-orange:hover, .btn-orange:active, .btn-orange:focus {
+                background-color: #FF7900;
+                color: #000000;
+            }
+
+            .btn-green {
+                background-color: #E4EA24;
+                color: #000000;
+            }
+
+            .btn-green:hover, .btn-green:active, .btn-green:focus {
+                background-color: #C8D602;
+                color: #000000;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <div class="mt-3 mx-3 row">
+            <h3 class="col-12 fw-bold mb-2 text-center">Hoy en un vistazo</h3>
+            <h4 id="pFechaActual" class="col-12 mb-5 text-center"></h4>
+
+            <a role="button" class="col-12 btn btn-primary btn-lg" href="https://www.google.co.cr/"><i class="fa-brands fa-google fa-xl"></i><br />Buscar en Google</a>
+
+            <hr class="my-4" />
+
+            <a role="button" class="col-12 col-md-5 btn btn-green btn-lg mb-3" href="https://www.bnventadebienes.com/properties/search"><i class="fa-solid fa-house-flag fa-xl"></i><br />Bienes adjudicados Banco Nacional</a>
+            <a role="button" class="col-12 col-md-5 btn btn-danger btn-lg mb-3 offset-md-2" href="https://www.grupomutual.fi.cr/bienes-raices/"><i class="fa-solid fa-house-flag fa-xl"></i><br />Bienes adjudicados Grupo Mutual</a>
+            <a role="button" class="col-12 btn btn-orange btn-lg" href="https://srv.bancopopular.fi.cr/Wb_BA_SharepointU/"><i class="fa-solid fa-house-flag fa-xl"></i><br />Bienes adjudicados Banco Popular</a>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="justify-content-center mb-3 mx-1 g-4 row row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <h3 class="fw-bold mb-4 text-center w-100">Resultados JPS</h3>
+
+            <div class="col">
+                <div class="card h-100">
+                    <div class="d-flex justify-content-center flex-column card-body">
+                        <div class="align-items-center mb-3 row">
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/Logo_Nuevos_Tiempos_Reventados.png" />
+                            <span class="col-8 col-xl-9">
+                                <p class="mb-1 fs-3">Nuevos Tiempos</p>
+                                <p id="pTiemposFecha" class="small text-capitalize">Fecha: N/A</p>
+                            </span>
+                        </div>
+                        <p id="pTiemposDiaSorteo" class="fw-bold mb-1">DÍA - Sorteo N/A</p>
+                        <p id="pTiemposDiaNum" class="d-inline-block">Número: N/A</p><span id="pTiemposDiaReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                        <p id="pTiemposTardeSorteo" class="fw-bold mb-1">TARDE - Sorteo N/A</p>
+                        <p id="pTiemposTardeNum" class="d-inline-block">Número: N/A</p><span id="pTiemposTardeReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                        <p id="pTiemposNocheSorteo" class="fw-bold mb-1">NOCHE - Sorteo N/A</p>
+                        <p id="pTiemposNocheNum" class="d-inline-block">Número: N/A</p><span id="pTiemposNocheReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                    </div>
+                    <div id="pTiemposError" class="alert alert-danger mx-2" role="alert" style="display: none;">
+                        Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
+                    </div>                  
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <div class="d-flex justify-content-center flex-column card-body">
+                        <div class="align-items-center mb-3 row">
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_lotto.png" />
+                            <span class="col-8 col-xl-9">
+                                <p class="mb-1 fs-3">Lotto</p>
+                                <p id="pLottoFecha" class="small text-capitalize">Fecha: N/A</p>
+                            </span>
+                        </div>
+                        <p id="pLottoNormalSorteo" class="fw-bold mb-1">NORMAL - Sorteo N/A</p>
+                        <p id="pLottoNormalNums">N/A</span></p>
+                        <p id="pLottoRevanchaSorteo" class="fw-bold mb-1">REVANCHA - Sorteo N/A</p>
+                        <p id="pLottoRevanchaNums">N/A</span></p>
+                    </div>
+                    <div id="pLottoError" class="alert alert-danger mx-2" role="alert" style="display: none;">
+                        Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <div class="d-flex justify-content-center flex-column card-body">
+                        <div class="align-items-center mb-3 row">
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_chances.png" />
+                            <span class="col-8 col-xl-9">
+                                <p class="mb-1 fs-3">Chances</p>
+                                <p id="pChancesFecha" class="small text-capitalize">Fecha: N/A</p>
+                            </span>
+                        </div>
+                        <p id="pChancesPrimerSorteo" class="fw-bold mb-1">PREMIO MAYOR - Sorteo N/A</p>
+                        <p id="pChancesPrimerNum">Número: N/A - Serie: N/A</p>
+                        <p id="pChancesSegSorteo" class="fw-bold mb-1">SEGUNDO PREMIO - Sorteo N/A</p>
+                        <p id="pChancesSegNum">Número: N/A - Serie: N/A</p>
+                        <p id="pChancesTerSorteo" class="fw-bold mb-1">TERCER PREMIO - Sorteo N/A</p>
+                        <p id="pChancesTerNum">Número: N/A - Serie: N/A</p>
+                    </div>
+                    <div id="pChancesError" class="alert alert-danger mx-2" role="alert" style="display: none;">
+                        Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
+                    </div> 
+                </div>
+            </div>
+        
+            <div class="col">
+                <div class="card h-100">
+                    <div class="d-flex justify-content-center flex-column card-body">
+                        <div class="align-items-center mb-3 row">
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_loteria.jpg" />
+                            <span class="col-8 col-xl-9">
+                                <p class="mb-1 fs-3">Lotería Nacional</p>
+                                <p id="pLoteriaFecha" class="small text-capitalize">Fecha: N/A</p>
+                            </span>
+                        </div>
+                        <p id="pLoteriaPrimerSorteo" class="fw-bold mb-1">PREMIO MAYOR - Sorteo N/A</p>
+                        <p id="pLoteriaPrimerNum">Número: N/A - Serie: N/A</p>
+                        <p id="pLoteriaSegSorteo" class="fw-bold mb-1">SEGUNDO PREMIO - Sorteo N/A</p>
+                        <p id="pLoteriaSegNum">Número: N/A - Serie: N/A</p>
+                        <p id="pLoteriaTerSorteo" class="fw-bold mb-1">TERCER PREMIO - Sorteo N/A</p>
+                        <p id="pLoteriaTerNum">Número: N/A - Serie: N/A</p>
+                    </div>
+                    <div id="pLoteriaError" class="alert alert-danger mx-2" role="alert" style="display: none;">
+                        Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
+                    </div> 
+                </div>
+            </div>
+        
+            <div class="col">
+                <div class="card h-100">
+                    <div class="d-flex justify-content-center flex-column card-body">
+                        <div class="align-items-center mb-3 row">
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_tresMonazos.png" />
+                            <span class="col-8 col-xl-9">
+                                <p class="mb-1 fs-3">3🐵 monazos</p>
+                                <p id="pMonazosFecha" class="small text-capitalize">Fecha: N/A</p>
+                            </span>
+                        </div>
+                        <p id="pMonazosDiaSorteo" class="fw-bold mb-1">DÍA - Sorteo N/A</p>
+                        <p id="pMonazosDiaNums">N/A</p>
+                        <p id="pMonazosTardeSorteo" class="fw-bold mb-1">TARDE - Sorteo N/A</p>
+                        <p id="pMonazosTardeNums">N/A</p>
+                        <p id="pMonazosNocheSorteo" class="fw-bold mb-1">NOCHE - Sorteo N/A</p>
+                        <p id="pMonazosNocheNums">N/A</p>
+                    </div>
+                    <div id="pMonazosError" class="alert alert-danger mx-2" role="alert" style="display: none;">
+                        Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
+                    </div> 
+                </div>
+            </div>
+
+            <div id="accordionConsultaPremios" class="accordion w-100">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLista" aria-expanded="true" aria-controls="collapseLista">
+                            Lista de premios
+                        </button>
+                    </h2>
+                    <div id="collapseLista" class="accordion-collapse collapse row" data-bs-parent="#accordionConsultaPremios">
+                        <a id="bLoteriaListaPremios" role="button" class="col-10 btn btn-warning mt-4 mb-3 offset-1" href="http://www.jps.go.cr/Listas/PremiosEspeciales/Nacional/{sorteo}.pdf" target="_blank">Descargar lista de premios Loteria Nacional</a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="small text-center">v1.0.0</p>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+
+        <script type="text/javascript" defer="defer">
+            const urlJPS = "https://integration.jps.go.cr/api/App/";
+            moment.locale("es-MX");
+
+            $("#pFechaActual").text(moment().format('dddd, D [de] MMMM [del] YYYY'));
+
+            $.getJSON(urlJPS + "nuevostiempos/last").done((data) => {
+                $("#pTiemposFecha").text($("#pTiemposFecha").text().replace("N/A", moment(data.dia).format('ddd DD[/]MM[/]YYYY')));
+                $("#pTiemposDiaSorteo").text($("#pTiemposDiaSorteo").text().replace("N/A", data.manana.numeroSorteo));
+                $("#pTiemposDiaNum").text($("#pTiemposDiaNum").text().replace("N/A", data.manana.numero));
+                if (data.manana.colorBolita.localeCompare("ROJA") === 0) {
+                    $("#pTiemposDiaReventado").show();
+                }
+                if (data.mediaTarde != null) {
+                    $("#pTiemposTardeSorteo").text($("#pTiemposTardeSorteo").text().replace("N/A", data.mediaTarde.numeroSorteo));
+                    $("#pTiemposTardeNum").text($("#pTiemposTardeNum").text().replace("N/A", data.mediaTarde.numero));
+                    if (data.mediaTarde.colorBolita.localeCompare("ROJA") === 0) {
+                        $("#pTiemposTardeReventado").show();
+                    }
+                }
+                if (data.tarde != null) {
+                    $("#pTiemposNocheSorteo").text($("#pTiemposNocheSorteo").text().replace("N/A", data.tarde.numeroSorteo));
+                    $("#pTiemposNocheNum").text($("#pTiemposNocheNum").text().replace("N/A", data.tarde.numero));
+                    if (data.tarde.colorBolita.localeCompare("ROJA") === 0) {
+                        $("#pTiemposNocheReventado").show();
+                    }
+                }
+            }).fail(() => {
+                $("#pTiemposError").show();
+            });
+
+            $.getJSON(urlJPS + "lotto/last").done((data) => {
+                $("#pLottoFecha").text($("#pLottoFecha").text().replace("N/A", moment(data.fecha).format('ddd DD[/]MM[/]YYYY')));
+                $("#pLottoNormalSorteo").text($("#pLottoNormalSorteo").text().replace("N/A", data.numeroSorteo));
+                $("#pLottoNormalNums").text($("#pLottoNormalNums").text().replace("N/A", data.numeros[0] + " - " + data.numeros[1] + " - " + data.numeros[2] + " - " + data.numeros[3] + " - " + data.numeros[4]));
+                $("#pLottoRevanchaSorteo").text($("#pLottoRevanchaSorteo").text().replace("N/A", data.numeroSorteo));
+                $("#pLottoRevanchaNums").text($("#pLottoRevanchaNums").text().replace("N/A", data.numerosRevancha[0] + " - " + data.numerosRevancha[1] + " - " + data.numerosRevancha[2] + " - " + data.numerosRevancha[3] + " - " + data.numerosRevancha[4]));
+            }).fail(() => {
+                $("#pLottoError").show();
+            });
+
+            $.getJSON(urlJPS + "tresmonazos/last").done((data) => {
+                $("#pMonazosFecha").text($("#pMonazosFecha").text().replace("N/A", moment(data.dia).format('ddd DD[/]MM[/]YYYY')));
+                $("#pMonazosDiaSorteo").text($("#pMonazosDiaSorteo").text().replace("N/A", data.manana.numeroSorteo));
+                $("#pMonazosDiaNums").text($("#pMonazosDiaNums").text().replace("N/A", data.manana.numeros[0] + " - " + data.manana.numeros[1] + " - " + data.manana.numeros[2]));
+                if (data.mediaTarde != null) {
+                    $("#pMonazosTardeSorteo").text($("#pMonazosTardeSorteo").text().replace("N/A", data.mediaTarde.numeroSorteo));
+                    $("#pMonazosTardeNums").text($("#pMonazosTardeNums").text().replace("N/A", data.mediaTarde.numeros[0] + " - " + data.mediaTarde.numeros[1] + " - " + data.mediaTarde.numeros[2]));
+                }
+                if (data.tarde != null) {
+                    $("#pMonazosNocheSorteo").text($("#pMonazosNocheSorteo").text().replace("N/A", data.tarde.numeroSorteo));
+                    $("#pMonazosNocheNums").text($("#pMonazosNocheNums").text().replace("N/A", data.tarde.numeros[0] + " - " + data.tarde.numeros[1] + " - " + data.tarde.numeros[2]));
+                }
+            }).fail(() => {
+                $("#pMonazosError").show();
+            });
+
+            $.getJSON(urlJPS + "chances/last").done((data) => {
+                $("#pChancesFecha").text($("#pChancesFecha").text().replace("N/A", moment(data.fecha).format('ddd DD[/]MM[/]YYYY')));
+                $("#pChancesPrimerSorteo").text($("#pChancesPrimerSorteo").text().replace("N/A", data.premios[0].sorteo));
+                $("#pChancesPrimerNum").text($("#pChancesPrimerNum").text().replace("N/A", data.premios[0].numero).replace("N/A", data.premios[0].serie));
+                $("#pChancesSegSorteo").text($("#pChancesSegSorteo").text().replace("N/A", data.premios[1].sorteo));
+                $("#pChancesSegNum").text($("#pChancesSegNum").text().replace("N/A", data.premios[1].numero).replace("N/A", data.premios[1].serie));
+                $("#pChancesTerSorteo").text($("#pChancesTerSorteo").text().replace("N/A", data.premios[2].sorteo));
+                $("#pChancesTerNum").text($("#pChancesTerNum").text().replace("N/A", data.premios[2].numero).replace("N/A", data.premios[2].serie));
+            }).fail(() => {
+                $("#pChancesError").show();
+            });
+
+            $.getJSON(urlJPS + "loterianacional/last").done((data) => {
+                $("#pLoteriaFecha").text($("#pLoteriaFecha").text().replace("N/A", moment(data.fecha).format('ddd DD[/]MM[/]YYYY')));
+                let primerSorteo = data.premios.find(x => x.tipo === 1);
+                $("#pLoteriaPrimerSorteo").text($("#pLoteriaPrimerSorteo").text().replace("N/A", primerSorteo.sorteo));
+                $("#pLoteriaPrimerNum").text($("#pLoteriaPrimerNum").text().replace("N/A", primerSorteo.numero).replace("N/A", primerSorteo.serie));
+                let segSorteo = data.premios.find(x => x.tipo === 2);
+                $("#pLoteriaSegSorteo").text($("#pLoteriaSegSorteo").text().replace("N/A", segSorteo.sorteo));
+                $("#pLoteriaSegNum").text($("#pLoteriaSegNum").text().replace("N/A", segSorteo.numero).replace("N/A", segSorteo.serie));
+                let terSorteo = data.premios.find(x => x.tipo === 3);
+                $("#pLoteriaTerSorteo").text($("#pLoteriaTerSorteo").text().replace("N/A", terSorteo.sorteo));
+                $("#pLoteriaTerNum").text($("#pLoteriaTerNum").text().replace("N/A", terSorteo.numero).replace("N/A", terSorteo.serie));
+                $("#bLoteriaListaPremios").attr("href", $("#bLoteriaListaPremios").attr("href").replace("{sorteo}", terSorteo.sorteo));
+            }).fail(() => {
+                $("#pLoteriaError").show();
+            });
+
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                $("html").attr("data-bs-theme", "dark");
+            }
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
+                $("html").attr("data-bs-theme", event.matches ? "dark" : "light");
+            });
+        </script>
+    </body>
+</html> 
