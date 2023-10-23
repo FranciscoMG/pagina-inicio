@@ -61,11 +61,20 @@
                             </span>
                         </div>
                         <p id="pTiemposDiaSorteo" class="fw-bold mb-1">DÍA - Sorteo N/A</p>
-                        <p id="pTiemposDiaNum" class="d-inline-block">Número: N/A</p><span id="pTiemposDiaReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                        <div class="row">
+                            <p id="pTiemposDiaNum" class="col-6 text-center">Número normal: N/A</p><p id="pTiemposDiaMegaNum" class="col-6 text-center">Mega número: N/A</p>
+                            <p id="pTiemposDiaReventado" class="col-12 fst-italic text-danger text-center" style="display: none;">REVENTADOS</p>
+                        </div>
                         <p id="pTiemposTardeSorteo" class="fw-bold mb-1">TARDE - Sorteo N/A</p>
-                        <p id="pTiemposTardeNum" class="d-inline-block">Número: N/A</p><span id="pTiemposTardeReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                        <div class="row">
+                            <p id="pTiemposTardeNum" class="col-6 text-center">Número normal: N/A</p><p id="pTiemposTardeMegaNum" class="col-6 text-center">Mega número: N/A</p>
+                            <p id="pTiemposTardeReventado" class="col-12 fst-italic text-danger text-center" style="display: none;">REVENTADOS</p>
+                        </div>
                         <p id="pTiemposNocheSorteo" class="fw-bold mb-1">NOCHE - Sorteo N/A</p>
-                        <p id="pTiemposNocheNum" class="d-inline-block">Número: N/A</p><span id="pTiemposNocheReventado" class="fst-italic text-danger" style="display: none;">&nbsp;REVENTADO</span>
+                        <div class="row">
+                            <p id="pTiemposNocheNum" class="col-6 text-center">Número normal: N/A</p><p id="pTiemposNocheMegaNum" class="col-6 text-center">Mega número: N/A</p>
+                            <p id="pTiemposNocheReventado" class="col-12 fst-italic text-danger text-center" style="display: none;">REVENTADOS</p>
+                        </div>
                     </div>
                     <div id="pTiemposError" class="alert alert-danger mx-2" role="alert" style="display: none;">
                         Ocurrió un error al consultar los datos de la JPS. <a href="#" class="alert-link" onclick="window.location.reload();">Recargar página</a>.
@@ -176,7 +185,7 @@
                 </div>
             </div>
 
-            <p class="small text-center">v1.0.0</p>
+            <p class="small text-center">v1.0.1</p>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -193,20 +202,26 @@
                 $("#pTiemposFecha").text($("#pTiemposFecha").text().replace("N/A", moment(data.dia).format('ddd DD[/]MM[/]YYYY')));
                 $("#pTiemposDiaSorteo").text($("#pTiemposDiaSorteo").text().replace("N/A", data.manana.numeroSorteo));
                 $("#pTiemposDiaNum").text($("#pTiemposDiaNum").text().replace("N/A", data.manana.numero));
+                $("#pTiemposDiaMegaNum").text($("#pTiemposDiaMegaNum").text().replace("N/A", data.manana.meganNumero));
                 if (data.manana.colorBolita.localeCompare("ROJA") === 0) {
+                    $("#pTiemposDiaReventado").prevAll().addClass("mb-1");
                     $("#pTiemposDiaReventado").show();
                 }
                 if (data.mediaTarde != null) {
                     $("#pTiemposTardeSorteo").text($("#pTiemposTardeSorteo").text().replace("N/A", data.mediaTarde.numeroSorteo));
                     $("#pTiemposTardeNum").text($("#pTiemposTardeNum").text().replace("N/A", data.mediaTarde.numero));
+                    $("#pTiemposTardeMegaNum").text($("#pTiemposTardeMegaNum").text().replace("N/A", data.mediaTarde.meganNumero));
                     if (data.mediaTarde.colorBolita.localeCompare("ROJA") === 0) {
+                        $("#pTiemposTardeReventado").prevAll().addClass("mb-1");
                         $("#pTiemposTardeReventado").show();
                     }
                 }
                 if (data.tarde != null) {
                     $("#pTiemposNocheSorteo").text($("#pTiemposNocheSorteo").text().replace("N/A", data.tarde.numeroSorteo));
                     $("#pTiemposNocheNum").text($("#pTiemposNocheNum").text().replace("N/A", data.tarde.numero));
+                    $("#pTiemposNocheMegaNum").text($("#pTiemposNocheMegaNum").text().replace("N/A", data.tarde.meganNumero));
                     if (data.tarde.colorBolita.localeCompare("ROJA") === 0) {
+                        $("#pTiemposNocheReventado").prevAll().addClass("mb-1");
                         $("#pTiemposNocheReventado").show();
                     }
                 }
