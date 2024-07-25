@@ -54,7 +54,7 @@
                 <div class="card h-100">
                     <div class="d-flex justify-content-center flex-column card-body">
                         <div class="align-items-center mb-3 row">
-                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/Logo_Nuevos_Tiempos_Reventados.png" />
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/_next/image?url=%2Fassets%2Fimg%2FnuevosTiempos.png&w=384&q=75" />
                             <span class="col-8 col-xl-9">
                                 <p class="mb-1 fs-3">Nuevos Tiempos</p>
                                 <p id="pTiemposFecha" class="small text-capitalize">Fecha: N/A</p>
@@ -86,7 +86,7 @@
                 <div class="card h-100">
                     <div class="d-flex justify-content-center flex-column card-body">
                         <div class="align-items-center mb-3 row">
-                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_lotto.png" />
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/_next/image?url=%2Fassets%2Fimg%2Flotto.png&w=384&q=75" />
                             <span class="col-8 col-xl-9">
                                 <p class="mb-1 fs-3">Lotto</p>
                                 <p id="pLottoFecha" class="small text-capitalize">Fecha: N/A</p>
@@ -107,7 +107,7 @@
                 <div class="card h-100">
                     <div class="d-flex justify-content-center flex-column card-body">
                         <div class="align-items-center mb-3 row">
-                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_chances.png" />
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/_next/image?url=%2Fassets%2Fimg%2Fchances.png&w=384&q=75" />
                             <span class="col-8 col-xl-9">
                                 <p class="mb-1 fs-3">Chances</p>
                                 <p id="pChancesFecha" class="small text-capitalize">Fecha: N/A</p>
@@ -130,7 +130,7 @@
                 <div class="card h-100">
                     <div class="d-flex justify-content-center flex-column card-body">
                         <div class="align-items-center mb-3 row">
-                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_loteria.jpg" />
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/_next/image?url=%2Fassets%2Fimg%2Fnacional.jpg&w=384&q=75" />
                             <span class="col-8 col-xl-9">
                                 <p class="mb-1 fs-3">Lotería Nacional</p>
                                 <p id="pLoteriaFecha" class="small text-capitalize">Fecha: N/A</p>
@@ -153,7 +153,7 @@
                 <div class="card h-100">
                     <div class="d-flex justify-content-center flex-column card-body">
                         <div class="align-items-center mb-3 row">
-                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/sites/all/themes/jps/images/logo_tresMonazos.png" />
+                            <img class="col-4 col-xl-3" src="https://www.jps.go.cr/_next/image?url=%2Fassets%2Fimg%2FtresMonazos.png&w=384&q=75" />
                             <span class="col-8 col-xl-9">
                                 <p class="mb-1 fs-3">3🐵 monazos</p>
                                 <p id="pMonazosFecha" class="small text-capitalize">Fecha: N/A</p>
@@ -172,20 +172,9 @@
                 </div>
             </div>
 
-            <div id="accordionConsultaPremios" class="accordion w-100">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLista" aria-expanded="true" aria-controls="collapseLista">
-                            Lista de premios
-                        </button>
-                    </h2>
-                    <div id="collapseLista" class="accordion-collapse collapse row" data-bs-parent="#accordionConsultaPremios">
-                        <a id="bLoteriaListaPremios" role="button" class="col-10 btn btn-warning mt-4 mb-3 offset-1" href="http://www.jps.go.cr/Listas/PremiosEspeciales/Nacional/{sorteo}.pdf" target="_blank">Descargar lista de premios Loteria Nacional</a>
-                    </div>
-                </div>
-            </div>
+            <a id="bPaginaJPS" role="button" class="btn btn-info mt-5 mb-2 w-75" href="https://www.jps.go.cr/resultados" target="_blank">Visitar página JPS</a>
 
-            <p class="small text-center">v1.0.1</p>
+            <p class="small text-center">v1.0.2</p>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -278,7 +267,6 @@
                 let terSorteo = data.premios.find(x => x.tipo === 3);
                 $("#pLoteriaTerSorteo").text($("#pLoteriaTerSorteo").text().replace("N/A", terSorteo.sorteo));
                 $("#pLoteriaTerNum").text($("#pLoteriaTerNum").text().replace("N/A", terSorteo.numero).replace("N/A", terSorteo.serie));
-                $("#bLoteriaListaPremios").attr("href", $("#bLoteriaListaPremios").attr("href").replace("{sorteo}", terSorteo.sorteo));
             }).fail(() => {
                 $("#pLoteriaError").show();
             });
